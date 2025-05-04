@@ -2,7 +2,7 @@ class Gomoku:
     def __init__(self, board_size=15):
         self.board_size = board_size
         self.board = [[0 for _ in range(board_size)] for _ in range(board_size)]
-        
+        self.max_depth = 4
 
     def make_move(self, row, col, player):
         if 0 <= row < self.board_size and 0 <= col < self.board_size and self.board[row][col] == 0:
@@ -30,7 +30,11 @@ class Gomoku:
                         return self.board[i][j]
         return 0  
     def is_draw(self):
-        pass
+        f=True
+        for i in range (self.board_size):
+            for j in range(self.board_size):
+                f&=self.board[i][j]!=0
+        return f        
 
     def evaluate_board(self):
         pass
@@ -46,8 +50,6 @@ class Gomoku:
 
         pass
 
-    def alpha_beta(self, depth, alpha, beta, maximizing_player):
-        pass
 
     def human_vs_ai(self):
         pass
